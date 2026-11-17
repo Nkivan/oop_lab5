@@ -79,7 +79,6 @@ internal abstract class EntityMenu<TModel, TEntity>
         return common.Concat(ExtraItems()).ToArray();
     }
 
-    // ---------- команди ----------
 
     protected void ShowAll()
     {
