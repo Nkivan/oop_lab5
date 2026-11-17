@@ -1,6 +1,5 @@
 namespace Lab5.DAL;
 
-/// <summary>Сутності рівня DAL: прості контейнери даних для серіалізації (без логіки та перевірок).</summary>
 public abstract class PersonEntity
 {
     public string FirstName { get; set; } = "";
