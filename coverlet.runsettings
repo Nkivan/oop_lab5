@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <!-- Вимірюємо покриття лише бізнес-логіки та доступу до даних, без тестів і консольного застосунку -->
+          <Include>[Lab5.BLL]*,[Lab5.DAL]*</Include>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
