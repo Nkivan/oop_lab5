@@ -2,10 +2,7 @@ using Lab5.DAL;
 
 namespace Lab5.Tests.Doubles;
 
-/// <summary>
-/// STUB (заглушка): повертає заготовлені дані, нічого не запам'ятовує. Потрібна, коли тесту
-/// важливі лише вхідні дані, а не те, як із ними працювали.
-/// </summary>
+
 public sealed class StubRepository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     private readonly List<TEntity> _data;
@@ -19,14 +16,11 @@ public sealed class StubRepository<TEntity> : IRepository<TEntity> where TEntity
 
     public void SaveAll(IReadOnlyCollection<TEntity> entities)
     {
-        // Заглушка нічого не робить.
+        
     }
 }
 
-/// <summary>
-/// MOCK (мок-об'єкт): окрім заготовлених даних, запам'ятовує звернення до себе,
-/// щоб тест міг перевірити взаємодію (скільки разів і що було збережено).
-/// </summary>
+
 public sealed class MockRepository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     private readonly List<TEntity> _data;
@@ -53,7 +47,7 @@ public sealed class MockRepository<TEntity> : IRepository<TEntity> where TEntity
     }
 }
 
-/// <summary>Заглушка, що імітує збій сховища (файл недоступний).</summary>
+
 public sealed class FailingRepositoryStub<TEntity> : IRepository<TEntity> where TEntity : class
 {
     public IReadOnlyList<TEntity> LoadAll()
