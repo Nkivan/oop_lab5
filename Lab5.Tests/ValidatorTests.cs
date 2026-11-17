@@ -8,13 +8,13 @@ public class ValidatorTests
     [Fact]
     public void IsValid_NullValue_ReturnsFalse()
     {
-        // Arrange
+     
         string value = null;
 
-        // Act
+      
         bool result = Validator.IsValid(Validator.NamePattern, value);
 
-        // Assert
+     
         Assert.False(result);
     }
 
@@ -24,12 +24,12 @@ public class ValidatorTests
     [InlineData("Анна-Марія")]
     public void IsValid_CorrectName_ReturnsTrue(string name)
     {
-        // Arrange (дані передає InlineData)
+   
 
-        // Act
+      
         bool result = Validator.IsValid(Validator.NamePattern, name);
 
-        // Assert
+  
         Assert.True(result);
     }
 
@@ -40,38 +40,38 @@ public class ValidatorTests
     [InlineData("Іван Петрович")]
     public void IsValid_IncorrectName_ReturnsFalse(string name)
     {
-        // Arrange (дані передає InlineData)
+    
 
-        // Act
+       
         bool result = Validator.IsValid(Validator.NamePattern, name);
 
-        // Assert
+       
         Assert.False(result);
     }
 
     [Fact]
     public void Require_ValidValue_DoesNotThrow()
     {
-        // Arrange
+      
         string value = "KB123456";
 
-        // Act
+  
         Exception exception = Record.Exception(() => Validator.Require(Validator.StudentIdPattern, value, "Студентський квиток"));
 
-        // Assert
+      
         Assert.Null(exception);
     }
 
     [Fact]
     public void Require_InvalidValue_ThrowsAndMessageContainsFieldName()
     {
-        // Arrange
+       
         Action act = () => Validator.Require(Validator.StudentIdPattern, "bad", "Студентський квиток");
 
-        // Act
+       
         InvalidEntityDataException exception = Assert.Throws<InvalidEntityDataException>(act);
 
-        // Assert
+  
         Assert.Contains("Студентський квиток", exception.Message);
     }
 
@@ -81,12 +81,10 @@ public class ValidatorTests
     [InlineData(5)]
     public void RequireRange_ValueInsideRange_DoesNotThrow(int value)
     {
-        // Arrange (дані передає InlineData)
-
-        // Act
+       
         Exception exception = Record.Exception(() => Validator.RequireRange(value, 0, 5, "Поле"));
 
-        // Assert
+        
         Assert.Null(exception);
     }
 
@@ -95,10 +93,10 @@ public class ValidatorTests
     [InlineData(6)]
     public void RequireRange_ValueOutsideRange_Throws(int value)
     {
-        // Arrange
+     
         Action act = () => Validator.RequireRange(value, 0, 5, "Поле");
 
-        // Act + Assert
+      
         Assert.Throws<InvalidEntityDataException>(act);
     }
 }
