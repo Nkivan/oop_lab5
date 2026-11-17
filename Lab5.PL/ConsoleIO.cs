@@ -2,7 +2,6 @@ using Lab5.BLL.Validation;
 
 namespace Lab5.PL;
 
-/// <summary>Читання з консолі та базове форматування (рівень представлення).</summary>
 internal static class ConsoleIO
 {
     public static string ReadLine(string prompt)
