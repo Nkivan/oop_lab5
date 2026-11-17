@@ -6,10 +6,7 @@ namespace Lab5.PL;
 
 internal static class Program
 {
-    /// <summary>
-    /// Точка складання залежностей (composition root): тільки тут створюються конкретні класи
-    /// (JsonFileRepository) і передаються в сервіси через конструктори. Тести передають замість них заглушки.
-    /// </summary>
+
     private static void Main()
     {
         string folder = Path.Combine(AppContext.BaseDirectory, "data");
