@@ -3,7 +3,7 @@ using Lab5.BLL.Exceptions;
 
 namespace Lab5.BLL.Validation;
 
-/// <summary>Контроль даних (на рівні бізнес-логіки): регулярні вирази та перевірки діапазонів.</summary>
+
 public static class Validator
 {
     public const string NamePattern = @"^[A-Za-zА-Яа-яІіЇїЄєҐґ'’\-]{2,30}$";
