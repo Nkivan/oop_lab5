@@ -3,7 +3,6 @@ using Lab5.DAL;
 
 namespace Lab5.BLL.Mapping;
 
-/// <summary>Перетворення між моделлю BLL та сутністю DAL.</summary>
 public interface IEntityMapper<TModel, TEntity>
 {
     TModel ToModel(TEntity entity);
