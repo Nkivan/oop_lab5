@@ -3,7 +3,6 @@ using Lab5.PL.Menus;
 
 namespace Lab5.PL;
 
-/// <summary>Головне меню застосунку (рівень представлення).</summary>
 internal sealed class Menu
 {
     private readonly StudentMenu _students;
@@ -45,7 +44,7 @@ internal sealed class Menu
         }
         catch (EndOfStreamException)
         {
-            // Вхідний потік закінчився - завершуємо роботу.
+
         }
     }
 }
