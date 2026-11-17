@@ -2,7 +2,6 @@ using Lab5.DAL;
 
 namespace Lab5.Tests.Doubles;
 
-/// <summary>Допоміжні методи для створення тестових сутностей (щоб Arrange залишався коротким).</summary>
 internal static class TestData
 {
     public static StudentEntity NewStudentEntity(
@@ -20,7 +19,6 @@ internal static class TestData
     public static AcrobatEntity NewAcrobatEntity(string certificate = "AC12345", int years = 4)
         => new AcrobatEntity { LastName = "Лисенко", FirstName = "Оксана", CertificateId = certificate, ExperienceYears = years };
 
-    /// <summary>Набір для завдання варіанта: 4 студенти 1-го курсу (3 з інших міст), 1 студент 2-го і 1 студент 3-го курсу.</summary>
     public static StudentEntity[] MixedStudents() => new[]
     {
         NewStudentEntity("KB123456", "Коваленко", 1, "Львів"),
