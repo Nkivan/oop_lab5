@@ -5,10 +5,7 @@ using Lab5.DAL;
 
 namespace Lab5.BLL.Services;
 
-/// <summary>
-/// Узагальнений сервіс бізнес-логіки. Залежності (репозиторій і мапер) приходять через конструктор
-/// (Dependency Injection), тому в тестах їх можна замінити заглушками.
-/// </summary>
+
 public class PersonService<TModel, TEntity>
     where TModel : Person
     where TEntity : PersonEntity
@@ -99,9 +96,7 @@ public class PersonService<TModel, TEntity>
         Modify(key, model => model.ObtainDriverLicense(results, licenseNumber));
     }
 
-    /// <summary>
-    /// Змінює стан запису й зберігає всі дані. Якщо зміна неможлива (виняток), нічого не записується.
-    /// </summary>
+
     protected void Modify(string key, Action<TModel> change)
     {
         List<TModel> models = LoadModels();
