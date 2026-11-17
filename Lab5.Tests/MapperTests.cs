@@ -11,15 +11,15 @@ public class MapperTests
     [Fact]
     public void StudentMapper_ToModelThenToEntity_PreservesAllFields()
     {
-        // Arrange
+     
         StudentMapper mapper = new StudentMapper();
         StudentEntity source = TestData.NewStudentEntity(dormitoryRoom: "3.215", dances: 2);
         source.DriverLicense = "ABC123456";
 
-        // Act
+       
         StudentEntity result = mapper.ToEntity(mapper.ToModel(source));
 
-        // Assert
+       
         Assert.Equal(source.LastName, result.LastName);
         Assert.Equal(source.FirstName, result.FirstName);
         Assert.Equal(source.Course, result.Course);
@@ -34,27 +34,27 @@ public class MapperTests
     [Fact]
     public void StudentMapper_ToModelWithInvalidEntity_ThrowsInvalidEntityData()
     {
-        // Arrange
+       
         StudentMapper mapper = new StudentMapper();
         StudentEntity broken = TestData.NewStudentEntity(course: 9);
         Action act = () => mapper.ToModel(broken);
 
-        // Act + Assert
+       
         Assert.Throws<InvalidEntityDataException>(act);
     }
 
     [Fact]
     public void TaxiDriverMapper_ToModelThenToEntity_PreservesAllFields()
     {
-        // Arrange
+     
         TaxiDriverMapper mapper = new TaxiDriverMapper();
         TaxiDriverEntity source = TestData.NewTaxiEntity(trips: 7);
         source.Dances = 3;
 
-        // Act
+        
         TaxiDriverEntity result = mapper.ToEntity(mapper.ToModel(source));
 
-        // Assert
+      
         Assert.Equal(source.DriverLicense, result.DriverLicense);
         Assert.Equal(source.Trips, result.Trips);
         Assert.Equal(source.Dances, result.Dances);
@@ -65,16 +65,16 @@ public class MapperTests
     [Fact]
     public void AcrobatMapper_ToModelThenToEntity_PreservesAllFields()
     {
-        // Arrange
+       
         AcrobatMapper mapper = new AcrobatMapper();
         AcrobatEntity source = TestData.NewAcrobatEntity(years: 9);
         source.Dances = 1;
         source.DriverLicense = "ABC123456";
 
-        // Act
+       
         AcrobatEntity result = mapper.ToEntity(mapper.ToModel(source));
 
-        // Assert
+       
         Assert.Equal(source.CertificateId, result.CertificateId);
         Assert.Equal(source.ExperienceYears, result.ExperienceYears);
         Assert.Equal(source.Dances, result.Dances);
