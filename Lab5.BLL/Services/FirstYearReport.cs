@@ -2,7 +2,6 @@ using Lab5.BLL.Models;
 
 namespace Lab5.BLL.Services;
 
-/// <summary>Результат операції варіанта 2.</summary>
 public class FirstYearReport
 {
     public string UniversityCity { get; }
