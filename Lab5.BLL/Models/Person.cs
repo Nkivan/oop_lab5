@@ -3,20 +3,17 @@ using Lab5.BLL.Validation;
 
 namespace Lab5.BLL.Models;
 
-/// <summary>
-/// Базова модель особи (рівень BLL). Усі дані перевіряються тут, у конструкторі.
-/// Додаткові вміння варіанта 2: танцювати та отримання водійського посвідчення при необхідних умовах.
-/// </summary>
+
 public abstract class Person
 {
     public string FirstName { get; }
     public string LastName { get; }
     public int Dances { get; private set; }
 
-    /// <summary>Номер водійського посвідчення (null, якщо посвідчення ще немає).</summary>
+
     public string DriverLicense { get; private set; }
 
-    /// <summary>Унікальний ключ конкретного типу особи.</summary>
+
     public abstract string Key { get; }
 
     protected Person(string lastName, string firstName, int dances, string driverLicense)
@@ -35,16 +32,13 @@ public abstract class Person
         DriverLicense = driverLicense;
     }
 
-    /// <summary>Вміння «танцювати»: змінює стан об'єкта.</summary>
+
     public void Dance()
     {
         Dances++;
     }
 
-    /// <summary>
-    /// Отримання водійського посвідчення. Умови: посвідчення ще немає, вік не менший за 18,
-    /// є медична довідка, складені теоретичний і практичний іспити, номер має коректний формат.
-    /// </summary>
+
     public void ObtainDriverLicense(DrivingExamResults results, string licenseNumber)
     {
         if (results == null)
