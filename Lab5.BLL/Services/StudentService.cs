@@ -12,10 +12,7 @@ public class StudentService : PersonService<Student, StudentEntity>
     {
     }
 
-    /// <summary>
-    /// Операція варіанта 2: відсоток студентів 1-го курсу, які приїхали з інших міст (не з міста університету),
-    /// та їхні дані. Дані читаються з файлу через репозиторій.
-    /// </summary>
+
     public FirstYearReport GetFirstYearFromOtherCities(string universityCity)
     {
         Validator.Require(Validator.CityPattern, universityCity, "Місто університету");
@@ -45,7 +42,6 @@ public class StudentService : PersonService<Student, StudentEntity>
         return new FirstYearReport(universityCity, firstYear.Count, fromOtherCities.Count, percent, fromOtherCities);
     }
 
-    /// <summary>Поселення в гуртожиток із збереженням змін.</summary>
     public void MoveIntoDormitory(string key, string universityCity, int dormitoryNumber, int roomNumber)
     {
         Modify(key, student => student.MoveIntoDormitory(universityCity, dormitoryNumber, roomNumber));
