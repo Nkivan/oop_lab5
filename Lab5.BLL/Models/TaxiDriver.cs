@@ -6,7 +6,6 @@ public class TaxiDriver : Person
 {
     public int Trips { get; private set; }
 
-    /// <summary>Ключ таксиста - його водійське посвідчення (воно обов'язкове).</summary>
     public override string Key => DriverLicense;
 
     public TaxiDriver(string lastName, string firstName, string driverLicense, int trips = 0, int dances = 0)
@@ -17,7 +16,6 @@ public class TaxiDriver : Person
         Trips = trips;
     }
 
-    /// <summary>Специфічна операція таксиста: завершити поїздку.</summary>
     public void CompleteTrip()
     {
         Trips++;
