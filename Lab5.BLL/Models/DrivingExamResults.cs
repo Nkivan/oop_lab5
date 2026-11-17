@@ -1,9 +1,8 @@
 namespace Lab5.BLL.Models;
 
-/// <summary>Результати, за якими вирішується питання про видачу водійського посвідчення.</summary>
 public class DrivingExamResults
 {
-    /// <summary>Мінімальний вік для отримання посвідчення.</summary>
+
     public const int MinimumAge = 18;
 
     public int Age { get; }
