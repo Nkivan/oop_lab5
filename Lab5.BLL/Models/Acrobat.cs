@@ -23,7 +23,6 @@ public class Acrobat : Person
         ExperienceYears = experienceYears;
     }
 
-    /// <summary>Специфічна операція акробата: збільшити стаж на рік.</summary>
     public void AddExperienceYear()
     {
         if (ExperienceYears >= MaxExperienceYears)
