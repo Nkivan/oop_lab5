@@ -53,68 +53,6 @@ SCHEMES.md    діаграми
 
 **Оцінка «відмінно»:** додаткові сутності `TaxiDriver` та `Acrobat` із тестами їхніх специфічних операцій (`TaxiDriverTests`, `AcrobatTests`, `OtherServicesTests`), поселення в гуртожиток (`StudentTests.MoveIntoDormitory_*`, `StudentServiceTests.MoveIntoDormitory_*`).
 
-## Запуск
-
-Застосунок:
-
-```
-dotnet run --project Lab5.PL/Lab5.PL.csproj
-```
-
-Або відкрити `Lab5.sln` у Visual Studio і запустити проєкт `Lab5.PL` (правою кнопкою на проєкті → Set as Startup Project). Файли даних (`students.json`, `taxidrivers.json`, `acrobats.json`) створюються в папці `data` поруч зі збіркою. Для швидкої демонстрації скористайтеся пунктом меню «Додати тестові дані».
-
-Типовий сценарій: Студенти → «Додати тестові дані» → «Завдання варіанта» (очікується: студентів 1-го курсу - 4, з інших міст - 3, відсоток - 75,0%) → «Оселити в гуртожиток» для студента з іншого міста.
-
-## Модульні тести
-
-Запуск усіх тестів:
-
-```
-dotnet test Lab5.sln
-```
-
-Або у Visual Studio: **Test → Test Explorer → Run All Tests**.
-
-| Клас тестів | Що перевіряє |
-|---|---|
-| `ValidatorTests` | регулярні вирази й перевірки діапазонів |
-| `StudentTests` | конструктор (коректні й некоректні дані), танці, поселення в гуртожиток |
-| `DriverLicenseTests` | усі умови отримання посвідчення, граничний вік, повторне отримання |
-| `TaxiDriverTests` | обов'язкове посвідчення, поїздки |
-| `AcrobatTests` | діапазон стажу, збільшення стажу |
-| `MapperTests` | перетворення DAL ↔ BLL, реакція на пошкоджені дані |
-| `StudentServiceTests` | додавання, видалення, пошук, дії, відсоток студентів 1-го курсу з інших міст (з заглушками й моками) |
-| `OtherServicesTests` | специфічні операції сервісів таксистів та акробатів |
-| `Integration/JsonFileRepositoryIntegrationTests` | **інтеграційні** тести зі справжнім файлом |
-
-Приклад тесту за принципом Triple A:
-
-```csharp
-[Fact]
-public void Add_DuplicateKey_ThrowsAndDoesNotSave()
-{
-    // Arrange
-    MockRepository<StudentEntity> repository = new MockRepository<StudentEntity>(TestData.NewStudentEntity("KB123456"));
-    StudentService service = new StudentService(repository);
-    Student duplicate = new Student("Інший", "Студент", 1, "KB123456", "Львів", "AB999999");
-    Action act = () => service.Add(duplicate);
-
-    // Act
-    DuplicateEntityException exception = Assert.Throws<DuplicateEntityException>(act);
-
-    // Assert
-    Assert.Contains("KB123456", exception.Message);
-    Assert.Equal(0, repository.SaveAllCallCount);
-}
-```
-
-Тестові двійники (`Lab5.Tests/Doubles`):
-
-- `StubRepository<T>` - повертає заготовлені дані, нічого не запам'ятовує (перевірка за станом);
-- `MockRepository<T>` - запам'ятовує, скільки разів і з чим його викликали (перевірка взаємодії);
-- `FailingRepositoryStub<T>` - імітує збій сховища.
-
-Модульні тести не торкаються файлів, а інтеграційні (клас у папці `Integration`) працюють зі справжнім тимчасовим файлом.
 
 ## Покриття коду
 
