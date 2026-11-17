@@ -3,7 +3,6 @@ using System.Text.Json;
 
 namespace Lab5.DAL;
 
-/// <summary>Зберігання набору сутностей у JSON-файлі (серіалізація - єдиний спосіб DAL у цій роботі).</summary>
 public class JsonFileRepository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
