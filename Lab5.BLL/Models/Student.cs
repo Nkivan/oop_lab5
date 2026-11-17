@@ -10,7 +10,6 @@ public class Student : Person
     public string ArrivalCity { get; }
     public string Passport { get; }
 
-    /// <summary>Гуртожиток і кімната у форматі «номер.кімната» (null, якщо студент не поселений).</summary>
     public string DormitoryRoom { get; private set; }
 
     public bool LivesInDormitory => DormitoryRoom != null;
@@ -37,10 +36,7 @@ public class Student : Person
         DormitoryRoom = dormitoryRoom;
     }
 
-    /// <summary>
-    /// Поселення в гуртожиток: можливе лише якщо студент приїхав з іншого міста (не з міста університету)
-    /// і ще не поселений.
-    /// </summary>
+
     public void MoveIntoDormitory(string universityCity, int dormitoryNumber, int roomNumber)
     {
         Validator.Require(Validator.CityPattern, universityCity, "Місто університету");
