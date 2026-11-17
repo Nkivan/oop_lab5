@@ -8,7 +8,6 @@ namespace Lab5.PL.Menus;
 
 internal sealed record MenuItem(string Title, Action Action);
 
-/// <summary>Узагальнене підменю для будь-якої особи: одні й ті самі команди для студентів, таксистів і акробатів.</summary>
 internal abstract class EntityMenu<TModel, TEntity>
     where TModel : Person
     where TEntity : PersonEntity
