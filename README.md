@@ -54,24 +54,6 @@ SCHEMES.md    діаграми
 **Оцінка «відмінно»:** додаткові сутності `TaxiDriver` та `Acrobat` із тестами їхніх специфічних операцій (`TaxiDriverTests`, `AcrobatTests`, `OtherServicesTests`), поселення в гуртожиток (`StudentTests.MoveIntoDormitory_*`, `StudentServiceTests.MoveIntoDormitory_*`).
 
 
-## Покриття коду
-
-Вимірювання засобом coverlet (входить у шаблон тестового проєкту) та ReportGenerator:
-
-```
-dotnet test Lab5.sln --settings coverlet.runsettings --collect:"XPlat Code Coverage" --results-directory TestResults
-dotnet tool install -g dotnet-reportgenerator-globaltool
-reportgenerator -reports:"TestResults/**/coverage.cobertura.xml" -targetdir:coveragereport -reporttypes:Html
-```
-
-Звіт відкривається у файлі `coveragereport/index.html`. Налаштування `coverlet.runsettings` обмежують вимірювання збірками `Lab5.BLL` та `Lab5.DAL`, тобто бізнес-логікою та доступом до даних, без самих тестів і консольного меню.
-
-У Visual Studio Enterprise покриття також можна отримати через **Test → Analyze Code Coverage for All Tests**.
-
-Основний показник для вимоги «покриття повинно бути 100%» - покриття рядків (Line coverage) класів бізнес-логіки. Додатково звіт показує покриття гілок (Branch coverage).
-
-Що стоїть за повним покриттям: кожен рядок і кожна гілка перевірок має відповідний тест: коректне значення й некоректне, межові значення (вік 17 і 18, курси 0, 1, 6, 7, стаж 60 і 61), порожній репозиторій, репозиторій зі збоєм, відсутній ключ.
-
 ## Контрольні запитання
 
 1. **Що таке модульне тестування?** Автоматична перевірка найменших ізольованих частин програми (методів, класів) окремо від решти системи.
